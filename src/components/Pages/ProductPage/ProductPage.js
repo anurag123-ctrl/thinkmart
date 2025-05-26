@@ -42,13 +42,6 @@ const ProductPage = () => {
     return item.id === params.id;
   });
 
-  function ScrollToTopOnMount() {
-    useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
-
-    return null;
-  }
 
   // selecting the sizes
   const [selectedSize, setSelectedSize] = useState(null);
@@ -129,7 +122,6 @@ const ProductPage = () => {
 
   return (
     <>
-      <ScrollToTopOnMount />
       <NavBar />
       <main id="productPage-main">
         <div id="productPage">
@@ -207,10 +199,6 @@ const ProductPage = () => {
               >
                 <HiOutlineShoppingBag />
                 ADD TO BAG
-              </button>
-              <button className="productPage-wishButton">
-                <HiOutlineHeart />
-                WISHLIST
               </button>
             </div>
           </div>

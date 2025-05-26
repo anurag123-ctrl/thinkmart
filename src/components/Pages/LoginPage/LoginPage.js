@@ -5,32 +5,27 @@ import { signInWithEmailAndPassword } from "../../../FireBaseConfig";
 import MyContext from "../../../context/MyContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Navbar from "../../NavBar/NavBar";
+import Footer from "../../Footer/Footer";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { isLoggedin, updateLoginStatus } = useContext(MyContext);
+  const { updateLoginStatus } = useContext(MyContext);
 
   const navigate = useNavigate();
 
   const handleSignIn = async (event) => {
     event.preventDefault();
     let loggedIn = await signInWithEmailAndPassword(email, password);
-    // console.log(loggedIn.uid);
+
     if (loggedIn && loggedIn.uid) {
       updateLoginStatus(true);
       toast.success("Logged in successfully!", {
         position: "top-center",
         autoClose: 1500,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
       });
-      // console.log(isLoggedin);
-      loggedIn = undefined;
+
       setTimeout(() => {
         navigate("/");
       }, 2000);
@@ -38,11 +33,6 @@ const LoginPage = () => {
       toast.error("Invalid Credentials!", {
         position: "top-center",
         autoClose: 1500,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
         theme: "colored",
       });
     }
@@ -50,33 +40,36 @@ const LoginPage = () => {
 
   return (
     <>
-      <div className="loginPage-wrapper"></div>
-      <form className="loginPage-form" onSubmit={handleSignIn}>
-        <h3>Login</h3>
-        <label htmlFor="username">Email</label>
-        <input
-          type="text"
-          placeholder="Email"
-          id="username"
-          // ref={emailRef}
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+    <Navbar />
+      <div className="loginPage-wrapper">
+        <form className="loginPage-form" onSubmit={handleSignIn}>
+          <h3>Welcome Back</h3>
+          <p>Please login to your account</p>
+          <label htmlFor="username">Email</label>
+          <input
+            type="text"
+            placeholder="Enter your email"
+            id="username"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          placeholder="Password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            placeholder="Enter your password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-        <button type="submit">LOGIN</button>
-        <Link to={"/signup"} className="newUser">
-          New User? Signup
-        </Link>
-      </form>
+          <button type="submit">Login</button>
+          <Link to="/signup" className="newUser">
+            Don't have an account? <span>Signup</span>
+          </Link>
+        </form>
+      </div>
+      <Footer />
       <ToastContainer />
     </>
   );

@@ -3,7 +3,7 @@ import NavBar from "../../NavBar/NavBar";
 import { useContext, useState } from "react";
 import MyContext from "../../../context/MyContext";
 import { Link,useNavigate } from "react-router-dom";
-import logo from "../../../assets/images/Myntra_Logo_nobg.png";
+import logo from '../../../assets/images/sample_images/thinkmart.png';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -63,9 +63,6 @@ const ShoppingCartPage = () => {
   ];
   const [cartData, setCartData] = useState(myContextData.cartState);
   console.log(cartData);
-  // data initialisation - end
-
-  // the billing section - start
   function calculateSum(array, property) {
     const total = array.reduce((accumulator, object) => {
       return accumulator + object[property] * object.quantity;
@@ -77,11 +74,6 @@ const ShoppingCartPage = () => {
   let totalAmount = calculateSum(cartData, "discounted_price");
   let totalMRP = calculateSum(cartData, "strike_price") + convenienceFee;
   let discountonMrp = totalMRP - totalAmount;
-  // the billing section - end
-
-  // events - start
-  //  updating quantity
-
   const handleIncrement = (id) => {
     const newCartData = cartData.map((item) => {
       if (item.id === id) {
@@ -147,7 +139,6 @@ const placeOrderHandler = () => {
         navigate("/login");
       },2000);
   }
-  // alert("Please login to place an order");
 }
 
   return (
@@ -156,7 +147,7 @@ const placeOrderHandler = () => {
       <div id="ShoppingCartPage-nav">
         <div className="ShoppingCartPage-logoHolder">
           <Link to={"/"}>
-            <img className="ShoppingCartPage-logo" src={logo} alt="myntra logo" />
+            <img className="ShoppingCartPage-logo" src={logo} alt="Thinkmart logo" />
           </Link>
         </div>
         <div id="ShoppingCartPage-navMid">
@@ -279,3 +270,4 @@ const placeOrderHandler = () => {
 };
 
 export default ShoppingCartPage;
+

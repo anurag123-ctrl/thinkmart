@@ -1,82 +1,175 @@
+.footer {
+    background-color: #111;
+    color: #f1f1f1;
+    padding: 40px 20px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .footer-container {
-    bottom: 0;
-    background-color: rgb(231, 231, 231);
-    width: 100%;
     display: flex;
-    justify-content: space-around;
-    align-items:flex-start;
-    padding: 10px 50px;
-    transition: 0.2s;
-}
-
-.footer-individualSections{
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.footer-individualSections h3{ 
-    margin-bottom: 3px;
-    font-size: 13px;
-}
-.footer-individualSections a {
-    text-decoration: none;
-    color: rgb(68, 68, 68);
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.footer-developerInfoSection {
-    width: 100%;
-    height: auto;
-    bottom: 0;
-    background-color: black;
-    color: white;
-    display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
-    padding: 5px 40px;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: auto;
+    gap: 40px 20px;
+}
+
+.footer-brand {
+    flex: 1 1 280px;
+    min-width: 250px;
+}
+
+.footer-brand h2 {
+    font-size: 28px;
+    color: #fff;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.footer-brand p {
     font-size: 15px;
+    line-height: 1.6;
+    color: #ccc;
+    font-weight: 500;
 }
 
-.footer-socialNetworks {
-    /* border: 2px solid red; */
-    display: flex;
-    gap: 25px;
-    align-items: center;
+.footer-logo {
+    max-width: 180px;
+    height: auto;
+    margin-bottom: 15px;
+    display: block;
 }
 
-.footer-socialNetworks a{
-    /* border: 2px solid red; */
-    width: 30px;
-    height: 30px;
-    font-size: 22px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
+.social-icons {
+    margin-top: 15px;
 }
 
-.footer-developer div:nth-child(2){
-    font-size: 12px;
-    opacity: 0.5;
+.social-icons a {
+    display: inline-block;
+    margin-right: 12px;
+    font-size: 20px;
+    color: #ccc;
+    transition: color 0.3s ease;
+    font-weight: 600;
 }
 
+.social-icons a:hover {
+    color: #00bcd4;
+}
 
-@media screen and (max-width:600px){
+.footer-links,
+.footer-contact {
+    flex: 1 1 200px;
+    min-width: 200px;
+}
+
+.footer-links h3,
+.footer-contact h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #ccc;
+    font-size: 14px;
+    transition: color 0.3s;
+    font-weight: 500;
+}
+
+.footer-links a:hover {
+    color: #00bcd4;
+}
+
+.footer-contact p {
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    border-top: 1px solid #444;
+    padding-top: 15px;
+    font-size: 14px;
+    color: #999;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 500;
+}
+
+@media (max-width: 1024px) {
     .footer-container {
-        padding: 10px 28px;
+        justify-content: center;
+        gap: 30px;
     }
+}
 
-    .footer-individualSections{
-        width: 100px;
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
+    .footer-brand,
+    .footer-links,
+    .footer-contact {
+        flex: 1 1 100%;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+    .footer-logo {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .social-icons a {
+        font-size: 18px;
+        margin-right: 10px;
+    }
+    .footer-bottom {
+        text-align: center;
+        padding: 20px 10px 0;
+    }
+}
 
-    .footer-developerInfoSection {
-        padding: 5px 10px;
+@media (max-width: 480px) {
+    .footer {
+        padding: 30px 15px 15px;
+    }
+    .footer-logo {
+        max-width: 120px;
+    }
+    .footer-brand h2 {
+        font-size: 22px;
+    }
+    .footer-links h3,
+    .footer-contact h3 {
+        font-size: 16px;
+    }
+    .footer-links a,
+    .footer-contact p {
         font-size: 13px;
     }
-
+    .social-icons a {
+        font-size: 16px;
+    }
+    .footer-bottom {
+        font-size: 13px;
+    }
 }

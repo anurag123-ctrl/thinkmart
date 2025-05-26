@@ -3,6 +3,9 @@ import NavBar from "../../NavBar/NavBar";
 import { Link, useParams } from "react-router-dom";
 import Card from "../../Card/Card";
 import { useEffect, useState } from "react";
+import Footer from "../../Footer/Footer";
+import { use } from "react";
+
 
 const ProductCatalogPage = () => {
   let inputDataMen = require("../../../assets/inputData/mens_data.json");
@@ -57,7 +60,6 @@ const ProductCatalogPage = () => {
     }
   }, [params]);
 
-  // Sorting - start
   const [sortLabel, setSortLabel] = useState("Recommended");
   const sortHandler = (selection) => {
     switch (selection) {
@@ -74,7 +76,6 @@ const ProductCatalogPage = () => {
           );
         });
         setInputData(sortByDiscount);
-        // // console.log(selection);
         setSortLabel("Better Discount");
         break;
       }
@@ -83,7 +84,6 @@ const ProductCatalogPage = () => {
           (a, b) => b.discounted_price - a.discounted_price
         );
         setInputData(sortByPrice);
-        // // console.log(selection);
         setSortLabel("Price High to Low");
         break;
       }
@@ -92,7 +92,6 @@ const ProductCatalogPage = () => {
           (a, b) => a.discounted_price - b.discounted_price
         );
         setInputData(sortByPrice);
-        // // console.log(selection);
         setSortLabel("Price Low to High");
         break;
       }
@@ -108,77 +107,56 @@ const ProductCatalogPage = () => {
       }
     }
   };
-  // Sorting - end
-
-  // Filtering
-  // showing in filters
-  // function to remove duplicates
   function removeDuplicates(arr) {
     return arr.filter((item, index) => arr.indexOf(item) === index);
   }
 
-  // getting the brands name
   const brandFilter = defaultData.map((obj) => obj.brand);
   const uniqueBrandFilter = removeDuplicates(brandFilter);
 
-  // Filter by Brands
   let selectedBrand = "All";
   let brandData = defaultData;
-  // const [brandData,setBrandData] = useState([]);
 
   const filterByBrand = (event) => {
     const { value, checked } = event.target;
-    // // console.log(value);
 
     if (value === "all") {
       setInputData(defaultData);
       brandData = defaultData;
     } else {
-      // // console.log(defaultData);
       brandData = defaultData.filter((item) => item.brand === value);
-      // // console.log(brandData);
       if (brandData.length === 0 || brandData === undefined) {
         setInputData(noInputData);
-        // // console.log('no data');
       } else {
         setInputData(brandData);
       }
     }
   };
 
-  // Filter by Price
   const filterByPrice = (min, max) => {
     setInputData(brandData);
     const filterByPriceArray = brandData.filter((item) => {
       return item.discounted_price >= min && item.discounted_price <= max;
     });
-    // // console.log(filterByPriceArray);
     setInputData(filterByPriceArray);
     if (filterByPriceArray.length === 0 || filterByPriceArray === []) {
       setInputData(noInputData);
     } else setInputData(filterByPriceArray);
   };
 
-  // Filter by Discount
   const filterByDiscount = (min) => {
     setInputData(brandData);
     const filterByDiscountArray = brandData.filter((item) => {
       return parseInt(item.discount.replace(/\D/g, "")) >= min;
     });
 
-    // console.log(filterByDiscountArray);
     setInputData(filterByDiscountArray);
     if (filterByDiscountArray.length === 0 || filterByDiscountArray === []) {
       setInputData(noInputData);
     } else setInputData(filterByDiscountArray);
   };
 
-  function ScrollToTopOnMount() {
-    useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
-  }
-
+ 
   const [filterIsVisible, setFilterIsVisible] = useState(true);
   function filterShowHideHandler() {
     setFilterIsVisible(!filterIsVisible);
@@ -187,10 +165,8 @@ const ProductCatalogPage = () => {
   return (
     inputData && (
       <>
-        <ScrollToTopOnMount />
         <NavBar />
         <div id="catalog-container">
-          {/* breadcrumb */}
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
@@ -209,12 +185,21 @@ const ProductCatalogPage = () => {
           </nav>
 
           <div id="catalog-SortSection">
-            {/* Filter */}
-            <div id="filterName" onClick={filterShowHideHandler}>
+            <div id="filterName" onClick={filterShowHideHandler} style={{ cursor: "pointer", display: "flex", alignItems: "center" }}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+                style={{ marginRight: "6px" }}
+              >
+                <path d="M6 10v4l4-4H6z" />
+              </svg>
               FILTERS
             </div>
 
-            {/* sort dropdown */}
+
             <div className="dropdown">
               <button
                 className="btn btn-secondary dropdown-toggle"
@@ -452,8 +437,9 @@ const ProductCatalogPage = () => {
           </div>
         </div>
       </>
+      
     )
   );
-};
 
+};
 export default ProductCatalogPage;

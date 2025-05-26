@@ -6,6 +6,7 @@ import ProductPage from "./components/Pages/ProductPage/ProductPage";
 import ShoppingCartPage from "./components/Pages/ShoppingCartPage/ShoppingCartPage";
 import SignupPage from './components/Pages/SignupPage/SignupPage';
 import LoginPage from './components/Pages/LoginPage/LoginPage';
+import Wishlist from './components/Pages/WishList/Wishlist';
 
 const AppRouter = () => {
     return (
@@ -14,6 +15,7 @@ const AppRouter = () => {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/catalog/:category" element={<ProductCatalogPage />} />
                 <Route path="/product/:id" element={<ProductPage />} />
+                <Route path="/wishlist" element={<Wishlist />} />
                 <Route path="/cart" element={<ShoppingCartPage />} />
                 <Route path="/signup" element={<SignupPage />} />
                 <Route path="/login" element={<LoginPage />} />

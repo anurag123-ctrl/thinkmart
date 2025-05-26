@@ -42,9 +42,6 @@ const Card = (props) => {
       </div>
       <Link
         to={`/product/${productDetails.id}`}
-        // data-refreshpage="true"
-        // target="_blank"
-        // href="/product"
         className="card-link"
       >
         <div className="product-imageSliderContainer">

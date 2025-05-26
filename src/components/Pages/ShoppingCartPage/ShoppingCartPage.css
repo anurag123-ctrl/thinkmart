@@ -1,220 +1,209 @@
 * {
     user-select: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #ShoppingCartPage {
-    position: relative;
+    background-color: #f3f4f6;
+    min-height: 100vh;
+    padding-top: 90px;
 }
+
+
+/* -------------------- NavBar -------------------- */
 
 #ShoppingCartPage-nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
     position: fixed;
+    top: 0;
     width: 100%;
     height: 80px;
-    top: 0;
-    z-index: 999;
-    background-color: white;
-    padding: 10px 30px;
-    box-shadow: 0 5px 10px rgb(0, 0, 0, 0.05);
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    z-index: 1000;
 }
 
-
 .ShoppingCartPage-logoHolder {
+    display: flex;
+    align-items: center;
     height: 100%;
-    padding: 14px;
 }
 
 .ShoppingCartPage-logo {
-    height: 100%;
+    height: 50px;
 }
 
-
 #ShoppingCartPage-navMid {
-    font-size: 1rem;
-    font-weight: 500;
-    letter-spacing: 1.5px;
-    position: relative;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1f2937;
 }
 
 .ShoppingCartPage-navHighlight {
-    color: rgb(31, 151, 31);
-    display: inline-block;
+    color: #10b981;
+    position: relative;
 }
 
 .ShoppingCartPage-navHighlight::after {
-    content: "";
-    width: 9.5%;
-    height: 2px;
+    content: '';
     position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #10b981;
+    bottom: -4px;
     left: 0;
-    bottom: 0;
-    background-color: rgb(31, 151, 31);
 }
 
 .ShoppingCartPage-secureContainer {
     display: flex;
-    gap: 10px;
-}
-
-.ShoppingCartPage-secureContainer img {
-    width: 26px;
-    /* height: 28px; */
-    /* display: flex; */
-    /* gap: 10px; */
-}
-
-
-/* body content */
-.ShoppingCartPage-container {
-    width: 100%;
-    position: absolute;
-    top: 100px;
-    /* border: 2px solid red; */
-    padding: 0 20px;
-    display: flex;
-    justify-content: center;
+    gap: 8px;
     align-items: center;
 }
 
-.ShoppingCartPage-main {
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-    /* border: 2px solid rgb(241, 162, 44); */
+.ShoppingCartPage-secureContainer img {
+    width: 24px;
 }
 
-/* listing section */
+
+/* -------------------- Body Layout -------------------- */
+
+.ShoppingCartPage-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.ShoppingCartPage-main {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    gap: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+
+/* -------------------- Item List Section -------------------- */
 
 .ShoppingCartPage-itemListSection {
-    width: 70%;
-    height: 100%;
-    border-right: 1px solid #eaeaec;
-    padding: 30px 20px;
+    flex: 2;
+    padding: 30px;
+    border-right: 1px solid #e5e7eb;
+    overflow-x: auto;
 }
 
 .ShoppingCartPage-itemListSection table {
     width: 100%;
-
+    border-collapse: collapse;
+    min-width: 600px;
 }
 
 .ShoppingCartPage-itemListSection table tr {
-    border-bottom: 1px solid #eaeaec;
-    width: 100%;
-    height: 50px;
-
+    border-bottom: 1px solid #e5e7eb;
 }
 
-.ShoppingCartPage-itemListSection table tr th {
-    font-size: 12px;
-    font-weight: 700;
-    color: #535766;
+.ShoppingCartPage-itemListSection table th,
+.ShoppingCartPage-itemListSection table td {
+    font-size: 15px;
+    padding: 16px 12px;
     text-align: center;
-    padding: 8px;
-    padding-top: 0;
+    color: #374151;
+    vertical-align: middle;
 }
-
-.ShoppingCartPage-itemListSection table tr td {
-    text-align: center;
-    padding: 10px;
-}
-
 
 .ShoppingCartPage-tableImg {
-    width: 50px;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
 .ShoppingCartPage-tableDesc {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    margin-top: 18px;
-    overflow: hidden;
-
+    text-align: left;
+    margin-left: 10px;
 }
 
 .ShoppingCartPage-tableDesc h3 {
-    font-size: 0.8rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #111827;
 }
 
 .ShoppingCartPage-tableDesc h4 {
-    font-size: 0.6rem;
-    color: #535766;
-    opacity: 0.8;
+    font-size: 0.8rem;
+    color: #6b7280;
 }
 
-.ShoppingCartPage-addBox {
-    border: 1px solid #eaeaec;
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    line-height: 40px;
+
+/* Action Buttons */
+
+.ShoppingCartPage-addBox,
+.ShoppingCartPage-addBox2,
+.ShoppingCartPage-addBoxDelete {
+    width: 38px;
+    height: 38px;
+    line-height: 38px;
     font-size: 1rem;
+    text-align: center;
     display: inline-block;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    margin: 0 4px;
+    transition: all 0.2s ease;
 }
 
 .ShoppingCartPage-addBox2 {
-    border: 1px solid #eaeaec;
-    background-color: #eaeaec;
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    line-height: 40px;
-    font-size: 1rem;
-    display: inline-block;
-    cursor: pointer;
+    background-color: #f9fafb;
 }
 
 .ShoppingCartPage-addBox2:hover {
-    border: 1px solid #acacac;
-    background-color: #acacac;
+    background-color: #1f2937;
     color: white;
 }
 
 .ShoppingCartPage-addBoxDelete {
-    border: 1px solid #eaeaec;
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    line-height: 40px;
-    font-size: 1rem;
-    display: inline-block;
-    cursor: pointer;
+    background-color: #fef2f2;
+    color: #b91c1c;
 }
 
 .ShoppingCartPage-addBoxDelete:hover {
-    border: 1px solid #eaeaec;
-    background-color: #ff3e6c;
+    background-color: #b91c1c;
     color: white;
 }
 
 .ShoppingCartPage-listPrice {
-    font-weight: 500;
-    width: 10%;
+    font-weight: 700;
+    color: #1f2937;
 }
 
-/* price section */
+
+/* -------------------- Price Section -------------------- */
+
 .ShoppingCartPage-PriceSection {
-    /* border: 2px solid rgb(116, 241, 44); */
-    width: 30%;
-    padding: 20px;
-    border-left: 1px solid #eaeaec;
+    flex: 1;
+    background: #f9fafb;
+    padding: 30px;
 }
 
 .ShoppingCartPage-priceBaseContainer {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 18px;
 }
 
 .ShoppingCartPage-priceheading {
-    font-size: 12px;
+    font-size: 1rem;
     font-weight: 700;
-    margin: 24px 0 16px;
-    color: #535766;
+    color: #374151;
 }
 
 .ShoppingCartPage-priceDetail {
@@ -224,86 +213,96 @@
 }
 
 .ShoppingCartPage-priceDetail h3 {
-    font-size: 14px;
-    color: #282c3f;
-    line-height: 16px;
-    font-weight: 400;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #4b5563;
 }
 
 .ShoppingCartPage-totalAmount {
-    border-top: 1px solid #eaeaec;
+    border-top: 1px solid #d1d5db;
+    padding-top: 16px;
+    margin-top: 10px;
 }
 
 .ShoppingCartPage-totalAmount h3 {
+    font-size: 1.1rem;
     font-weight: 700;
-    font-size: 15px;
-    padding-top: 16px;
-    color: #3e4152;
+    color: #111827;
 }
-
 
 .ShoppingCartPage-buyButton {
     width: 100%;
-    height: 40px;
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 3px;
+    height: 50px;
+    margin-top: 25px;
+    font-size: 1rem;
     font-weight: 700;
+    color: white;
+    background: #10b981;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
-    background-color: #ff3e6c;
-    border: 1px solid #ff3e6c;
-    color: #fff;
-    text-align: center;
+    transition: background 0.3s;
 }
 
 .ShoppingCartPage-buyButton:hover {
-    opacity: 0.8;
+    background: #059669;
 }
+
+
+/* -------------------- Responsive -------------------- */
 
 @media (max-width: 768px) {
     #ShoppingCartPage-nav {
         height: 60px;
-        padding: 10px 10px;
+        padding: 10px 20px;
     }
-
     #ShoppingCartPage-navMid {
-        font-size: 0.5rem;
-        font-weight: 500;
-        letter-spacing: 1px;
-        position: relative;
+        font-size: 0.85rem;
     }
-
-    .ShoppingCartPage-secureContainer {
-        scale: 0.6;
-        flex-direction: column;
-        align-items: center;
-    }
-
     .ShoppingCartPage-container {
-        width: 100%;
-        position: absolute;
-        top: 40px;
-        padding: 0 0px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        padding: 10px;
     }
-
     .ShoppingCartPage-main {
-        width: 100%;
         flex-direction: column;
+        box-shadow: none;
     }
-
+    .ShoppingCartPage-itemListSection,
     .ShoppingCartPage-PriceSection {
         width: 100%;
+        border: none;
+        padding: 20px;
     }
-
-    .ShoppingCartPage-itemListSection {
-        width: 100%;
-        border-right: none;
-        padding: 30px 0px 0px 0px;
-        scale: 0.9;
+    .ShoppingCartPage-itemListSection table th,
+    .ShoppingCartPage-itemListSection table td {
+        font-size: 13px;
+        padding: 10px 6px;
+    }
+    .ShoppingCartPage-addBox,
+    .ShoppingCartPage-addBox2,
+    .ShoppingCartPage-addBoxDelete {
+        width: 34px;
+        height: 34px;
+        line-height: 34px;
+    }
+    .ShoppingCartPage-buyButton {
+        height: 45px;
+        font-size: 0.95rem;
+    }
+    .ShoppingCartPage-tableImg {
+        width: 50px;
+        height: 50px;
+    }
+    .ShoppingCartPage-secureContainer {
+        flex-wrap: wrap;
+        gap: 4px;
+        justify-content: center;
+        transform: scale(0.9);
+    }
+    .ShoppingCartPage-priceheading,
+    .ShoppingCartPage-priceDetail h3 {
+        font-size: 0.85rem;
+    }
+    .ShoppingCartPage-totalAmount h3 {
+        font-size: 1rem;
     }
 }

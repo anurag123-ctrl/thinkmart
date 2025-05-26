@@ -2,7 +2,7 @@ import "./NavBar.css";
 import MyContext from "../../context/MyContext";
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../../assets/images/Myntra_Logo_nobg.png";
+import logo from "../../assets/images/sample_images/thinkmart.png"
 import NavSide from "./NavSide";
 import ProductList from "./ProductList";
 import SearchBar from "./SearchBar";
@@ -54,16 +54,13 @@ const NavBar = () => {
 
 
   const { isLoggedin, updateLoginStatus } = useContext(MyContext);
-  // console.log(isLoggedin);
   const navigate = useNavigate();
   const loginHandler = () => {
     navigate("/login");
-    // updateLoginStatus(!isLoggedin);
   };
   const logoutHandler = () => {
     signOut();
     updateLoginStatus(false);
-    // console.log(isLoggedin);
   };
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -82,7 +79,7 @@ const menuOpenHandler = () => {
           </div>
           <div className="navBar-logoHolder">
             <Link to={"/"}>
-              <img className="navBar-logo" src={logo} alt="myntra logo" />
+              <img className="navBar-logo" src={logo} alt="Thinkmart logo" />
             </Link>
           </div>
           <div className="navBar-categorySection">
@@ -95,21 +92,14 @@ const menuOpenHandler = () => {
             <Link to={"/Catalog/kids"} className="navBar-cat">
               KIDS
             </Link>
-            <span className="navBar-cat my-tooltip">HOME & LIVING</span>
-            <span className="navBar-cat my-tooltip">BEAUTY</span>
             <span className="navBar-cat navBar-catStudio my-tooltip">
-              STUDIO <div className="navBar-catNew">NEW</div>
+              More <div className="navBar-catNew">NEW</div>
             </span>
           </div>
         </div>
         <div className="navBar-rightSection">
           <div className="NavBar-searchBar">
             <HiOutlineSearch className="navBar-searchIcon" />
-            {/* <input
-              className="navBar-search"
-              type="text"
-              placeholder="Search for products, brands and more"
-            /> */}
             <SearchBar searchTerm={searchTerm} handleSearch={handleSearch}/>
             {searchTerm && <ProductList products={filteredProducts} />}
           </div>
@@ -137,14 +127,14 @@ const menuOpenHandler = () => {
               )}
             </div>
           </div>
-          <Link to="/cart" className="navBar-iconContainer">
+          <Link to="/wishlist" className="navBar-iconContainer">
             <HiOutlineHeart className="navBar-icon" />
             <div className="navBar-iconHead">Wishlist</div>
           </Link>
           <Link to="/cart" className="navBar-iconContainer navBar-cartIcon">
             <HiOutlineShoppingBag className="navBar-icon" />
             <span className="navBar-cart-list-length">{cartCount}</span>
-            <div className="navBar-iconHead">Bag</div>
+            <div className="navBar-iconHead">Cart</div>
           </Link>
         </div>
       </div>
