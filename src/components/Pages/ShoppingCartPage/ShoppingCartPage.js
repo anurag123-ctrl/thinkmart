@@ -144,24 +144,7 @@ const placeOrderHandler = () => {
   return (
     <div id="ShoppingCartPage">
       <NavBar />
-      <div id="ShoppingCartPage-nav">
-        <div className="ShoppingCartPage-logoHolder">
-          <Link to={"/"}>
-            <img className="ShoppingCartPage-logo" src={logo} alt="Thinkmart logo" />
-          </Link>
-        </div>
-        <div id="ShoppingCartPage-navMid">
-          <span>
-            <span className="ShoppingCartPage-navHighlight">BAG</span>{" "}
-            ---------- ADDRESS ---------- PAYMENT
-          </span>
-        </div>
-        <div id="ShoppingCartPage-navEnd">
-          <div className="ShoppingCartPage-secureContainer">
-            <img src="https://constant.myntassets.com/checkout/assets/img/sprite-secure.png" />
-            <div>100% SECURE</div>
-          </div>
-        </div>
+      
       </div>
 
       {/* body content */}
