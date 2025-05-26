@@ -1,0 +1,81 @@
+.coupon-container {
+    display: flex;
+    width: 90%;
+    max-width: 800px;
+    height: 120px;
+    margin: 40px auto;
+    /* centers the coupon */
+    border-radius: 20px;
+    overflow: hidden;
+    font-family: 'Georgia', serif;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    background: transparent;
+}
+
+.coupon-left {
+    flex: 2;
+    background: #f58220;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    clip-path: polygon( 0% 0%, 95% 0%, 100% 10%, 100% 90%, 95% 100%, 0% 100%, 5% 90%, 5% 10%);
+    padding: 10px;
+    text-align: center;
+}
+
+.coupon-right {
+    flex: 1;
+    background: #1e1e1e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    padding: 10px;
+    clip-path: polygon( 0% 0%, 95% 0%, 100% 10%, 100% 90%, 95% 100%, 0% 100%, 5% 90%, 5% 10%);
+}
+
+.coupon-subtext {
+    line-height: 1.5;
+}
+
+.coupon-logo {
+    height: 24px;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+
+.rupee {
+    font-family: 'Arial', sans-serif;
+}
+
+
+/* Zig-zag circular cuts (like a real coupon) on both sides */
+
+.coupon-container::before,
+.coupon-container::after {
+    content: '';
+    width: 30px;
+    height: 30px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 2;
+}
+
+.coupon-container::before {
+    top: 50%;
+    left: -15px;
+    transform: translateY(-50%);
+}
+
+.coupon-container::after {
+    top: 50%;
+    right: -15px;
+    transform: translateY(-50%);
+}

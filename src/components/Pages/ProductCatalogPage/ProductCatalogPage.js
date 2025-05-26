@@ -436,6 +436,7 @@ const ProductCatalogPage = () => {
             </div>
           </div>
         </div>
+        <Footer/>
       </>
       
     )

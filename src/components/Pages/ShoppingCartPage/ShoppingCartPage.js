@@ -142,115 +142,121 @@ const placeOrderHandler = () => {
 }
 
   return (
-    <div id="ShoppingCartPage">
-      <NavBar />
-      
-      </div>
+    <>
+      <div id="ShoppingCartPage">
+        <NavBar />
 
-      {/* body content */}
-      <div className="ShoppingCartPage-container">
-        <div className="ShoppingCartPage-main">
-          <div className="ShoppingCartPage-itemListSection">
-            <table>
-              <thead>
-              <tr>
-                <th>Image</th>
-                <th colSpan={1}>Description</th>
-                <th>Size</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Delete</th>
-              </tr>
-              </thead>
-              <tbody>
-              {
-              cartData.map((item) => (
-                <tr key={item.id}>
-                  <td colSpan={1}>
-                    <img
-                      className="ShoppingCartPage-tableImg"
-                      src={item.images[0]}
-                      alt="cart image"
-                    />
-                  </td>
-                  <td colSpan={1} className="ShoppingCartPage-tableDesc">
-                    <h3>{item.title}</h3>
-                    <h4>{item.brand}</h4>
-                  </td>
-                  <td colSpan={1}>
-                    <div className="ShoppingCartPage-addBox">
-                      {item.selected_size}
-                    </div>
-                  </td>
-                  <td>
-                    <div>
-                      <span
-                        className="ShoppingCartPage-addBox2"
-                        onClick={() => handleDecrement(item.id)}
-                      >
-                        -
-                      </span>
-                      <span className="ShoppingCartPage-addBox">
-                        {item.quantity}
-                      </span>
-                      <span
-                        className="ShoppingCartPage-addBox2"
-                        onClick={() => handleIncrement(item.id)}
-                      >
-                        +
-                      </span>
-                    </div>
-                  </td>
-                  <td className="ShoppingCartPage-listPrice">
-                    ₹ {item.discounted_price * item.quantity}
-                  </td>
-                  <td>
-                    <div
-                      className="ShoppingCartPage-addBoxDelete"
-                      onClick={() => handleDelete(item.id)}
-                    >
-                      X
-                    </div>
-                  </td>
-                </tr>
-              ))
-              }
-              </tbody>
-            </table>
-          </div>
-          <div className="ShoppingCartPage-PriceSection">
-            <div className="ShoppingCartPage-priceBaseContainer">
-              <h2 className="ShoppingCartPage-priceheading">
-                PRICE DETAILS
-                <span> ({cartData.length} Items)</span>
-              </h2>
-              <div className="ShoppingCartPage-priceDetail">
-                <h3>Total MRP</h3>
-                <h3>₹ {totalMRP}</h3>
+        <div className="ShoppingCartPage-container">
+          <div className="ShoppingCartPage-main">
+            <div className="ShoppingCartPage-itemListSection">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th colSpan={1}>Description</th>
+                    <th>Size</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {cartData.map((item) => (
+                    <tr key={item.id}>
+                      <td colSpan={1}>
+                        <img
+                          className="ShoppingCartPage-tableImg"
+                          src={item.images[0]}
+                          alt="cart"
+                        />
+                      </td>
+                      <td colSpan={1} className="ShoppingCartPage-tableDesc">
+                        <h3>{item.title}</h3>
+                        <h4>{item.brand}</h4>
+                      </td>
+                      <td colSpan={1}>
+                        <div className="ShoppingCartPage-addBox">
+                          {item.selected_size}
+                        </div>
+                      </td>
+                      <td>
+                        <div>
+                          <span
+                            className="ShoppingCartPage-addBox2"
+                            onClick={() => handleDecrement(item.id)}
+                          >
+                            -
+                          </span>
+                          <span className="ShoppingCartPage-addBox">
+                            {item.quantity}
+                          </span>
+                          <span
+                            className="ShoppingCartPage-addBox2"
+                            onClick={() => handleIncrement(item.id)}
+                          >
+                            +
+                          </span>
+                        </div>
+                      </td>
+                      <td className="ShoppingCartPage-listPrice">
+                        ₹ {item.discounted_price * item.quantity}
+                      </td>
+                      <td>
+                        <div
+                          className="ShoppingCartPage-addBoxDelete"
+                          onClick={() => handleDelete(item.id)}
+                        >
+                          X
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="ShoppingCartPage-PriceSection">
+              <div className="ShoppingCartPage-priceBaseContainer">
+                <h2 className="ShoppingCartPage-priceheading">
+                  PRICE DETAILS <span>({cartData.length} Items)</span>
+                </h2>
+
+                <div className="ShoppingCartPage-priceDetail">
+                  <h3>Total MRP</h3>
+                  <h3>₹ {totalMRP}</h3>
+                </div>
+
+                <div className="ShoppingCartPage-priceDetail">
+                  <h3>Discount on MRP</h3>
+                  <h3>- ₹ {discountonMrp}</h3>
+                </div>
+
+                <div className="ShoppingCartPage-priceDetail">
+                  <h3>Convenience Fee</h3>
+                  <h3>FREE</h3>
+                </div>
+
+                <div className="ShoppingCartPage-priceDetail ShoppingCartPage-totalAmount">
+                  <h3>Total Amount</h3>
+                  <h3>₹ {totalAmount}</h3>
+                </div>
+
+                <button
+                  className="ShoppingCartPage-buyButton"
+                  onClick={placeOrderHandler}
+                >
+                  PLACE ORDER
+                </button>
               </div>
-              <div className="ShoppingCartPage-priceDetail">
-                <h3>Discount on MRP</h3>
-                <h3>- ₹ {discountonMrp}</h3>
-              </div>
-              <div className="ShoppingCartPage-priceDetail">
-                <h3>Convenience Fee</h3>
-                <h3>FREE</h3>
-              </div>
-              <div className="ShoppingCartPage-priceDetail ShoppingCartPage-totalAmount">
-                <h3>Total Amount</h3>
-                <h3>₹ {totalAmount}</h3>
-              </div>
-              <button className="ShoppingCartPage-buyButton" onClick={placeOrderHandler}>
-                PLACE ORDER
-              </button>
             </div>
           </div>
         </div>
+
+        <footer />
+        <ToastContainer />
       </div>
-      <ToastContainer/>
-    </div>
+    </>
   );
 };
 
 export default ShoppingCartPage;
-
