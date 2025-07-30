@@ -12,7 +12,7 @@ const SaleCountdownTimer = () => {
   }, []);
 
   function calculateTimeRemaining() {
-    const endTime = new Date("2025-07-29T00:00:00Z");
+    const endTime = new Date("2026-07-29T00:00:00Z");
     const currentTime = new Date();
     const timeDifference = endTime - currentTime;
 
